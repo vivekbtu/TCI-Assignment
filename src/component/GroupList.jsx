@@ -49,6 +49,15 @@ const GroupList = () => {
     };
 
     const handleShowStatus = () => {
+        // console.log("Length",(groups.length), typeof(+(groups[0].from)))
+
+        if(groups.length === 1){
+            if((+(groups[0].from)) > 1 || (+(groups[0].from)) < 1){
+            alert('Please enter a valid range, The starting value must be 1');
+            // console.log("Hello condition")
+            return;
+            }
+        }
         groups.forEach((group, index) => {
             const promises = [];
             for (let i = group.from; i <= group.to; i++) {
@@ -94,6 +103,20 @@ const GroupList = () => {
                                 } else {
                                     setError('');
                                 }
+                                // onChange={(e) => {
+                                //     const value = parseInt(e.target.value);
+                                //     if (value === 1 || (value > 5 && value <= 10)) {
+                                //         setNewFrom(value);
+                                //     } else {
+                                //         setError('The starting value must be 1 for Group1 and between 6 to 10 for Group2.');
+                                //     }
+                                // }}
+                            }
+
+                            else{
+                                if(value > 1){
+                                    setError('The starting value must be 1');
+                                } 
                             }
                         }}
                     />
